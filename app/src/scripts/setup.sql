@@ -29,6 +29,16 @@ packages = ('snowflake-snowpark-python','pandas','scikit-learn==1.1.1')
 imports = ('/libraries/udf.py')
 handler = 'udf.cal_distance';
 
+create or replace function app_instance_schema.hello_world()
+returns string
+language python
+runtime_version = '3.8'
+packages = ('snowflake-snowpark-python')
+imports = ('/libraries/udf.py')
+handler = 'udf.hello_world';
+
+grant usage on function app_instance_schema.hello_world() to application role app_instance_role;
+
 -- Create Stored Procedure
 create or replace procedure app_instance_schema.billing_event(number_of_rows int)
 returns string
