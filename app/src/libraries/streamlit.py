@@ -73,6 +73,10 @@ def load_app(orders_table,site_recovery_table):
                 # Underlying Data
                 # st.subheader("Underlying Data")
                 # st.dataframe(df_order_status)
+                
+        with st.container():
+            usage_data = session.sql('SELECT warehouse_name, SUM(credits_used_compute) AS credits_used_compute_sum FROM snowflake.account_usage.warehouse_metering_history GROUP BY 1 ORDER BY 2 DESC;')
+            usage_data
 
 orders_reference_associations = permission.get_reference_associations("order_table")
 if len(orders_reference_associations) == 0:

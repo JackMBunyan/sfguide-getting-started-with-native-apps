@@ -34,3 +34,11 @@ references:
       object_type: Table 
       multi_valued: false 
       register_callback: app_instance_schema.update_reference
+  - snowflake:
+      label: "Credit Access"
+      description: "Select table"
+      privileges:
+        - SELECT
+      object_type: Table
+      multi-valued: false
+      register_callback: app_instance_schema.update_reference
